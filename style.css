@@ -1,0 +1,361 @@
+body{
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background:linear-gradient(135deg,#ffd6e8,#d6f5ff);
+}
+
+.layout{
+  display:flex;
+}
+
+/* sidebar */
+.sidebar{
+  width:200px;
+  background:rgba(255,255,255,0.5);
+  padding:15px;
+  min-height:100vh;
+}
+
+.sidebar h3{
+  color:#ff2e79;
+}
+
+.sidebar ul{
+  list-style:none;
+  padding:0;
+}
+
+.sidebar li{
+  padding:10px;
+  margin:5px 0;
+  background:white;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* main */
+.main{
+  flex:1;
+  padding:20px;
+}
+
+header{
+  text-align:center;
+  font-size:24px;
+  color:#ff2e79;
+  font-weight:bold;
+}
+
+/* form */
+.form-box{
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+
+.row{
+  display:flex;
+  gap:10px;
+}
+
+select,input,textarea{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ddd;
+}
+
+button{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(45deg,#ff4d8d,#ff8fc7);
+  color:white;
+  font-weight:bold;
+}
+
+/* card */
+.card{
+  background:white;
+  padding:15px;
+  margin-top:15px;
+  border-radius:15px;
+  border-left:5px solid #ff4d8d;
+}
+
+.card img{
+  width:100%;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+.heart-burst{
+  animation: burst 1s ease-out forwards;
+  pointer-events:none;
+}
+
+@keyframes burst{
+  0%{
+    transform:translate(0,0) scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:translate(
+      calc(-50px + 100px * var(--rand,1)),
+      calc(-80px + 160px * var(--rand,1))
+    ) scale(0);
+    opacity:0;
+  }
+}
+.sidebar{
+  width:200px;
+  background:rgba(255,255,255,0.5);
+  padding:15px;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden; /* penting supaya love keluar dari belakang */
+}
+
+/* love di belakang sidebar */
+.heart-burst{
+  position:absolute;
+  color:#ff4d8d;
+  pointer-events:none;
+  z-index:0; /* di belakang list bulan */
+  animation: burstUp 1s ease-out forwards;
+  opacity:0.9;
+}
+
+.sidebar h3,
+.sidebar ul{
+  position:relative;
+  z-index:2; /* biar teks tetap di depan love */
+}
+
+@keyframes burstUp{
+  0%{
+    transform:translateY(20px) scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-120px) scale(0);
+    opacity:0;
+  }
+}
+
+.main{
+  flex:1;
+  padding:20px;
+  perspective:1000px; /* penting untuk efek album */
+}
+
+/* efek album buka */
+.album-open{
+  animation: openAlbum 0.6s ease forwards;
+  transform-origin:left;
+}
+
+@keyframes openAlbum{
+  0%{
+    transform:rotateY(-90deg) scale(0.9);
+    opacity:0;
+  }
+  100%{
+    transform:rotateY(0deg) scale(1);
+    opacity:1;
+  }
+}
+
+/* card seperti foto album */
+.card{
+  background:white;
+  padding:15px;
+  margin-top:15px;
+  border-radius:15px;
+  border-left:5px solid #ff4d8d;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transform-origin:center;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.02) rotateZ(-0.3deg);
+}
+
+.mouse-heart{
+  position:absolute;
+  pointer-events:none;
+  font-size:14px;
+  animation: floatUp 1s ease-out forwards;
+  z-index:1;
+  opacity:0.9;
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-20px) scale(0.5);
+    opacity:0;
+  }
+}
+
+.global-heart{
+  position:fixed;
+  pointer-events:none;
+  font-size:14px;
+  animation: floatUpGlobal 1s ease-out forwards;
+  z-index:9999;
+}
+
+@keyframes floatUpGlobal{
+  0%{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-25px) scale(0.4);
+    opacity:0;
+  }
+}
+
+.month-heart{
+  position:fixed;
+  font-size:14px;
+  animation: popLoveFix 1s ease-out forwards;
+  pointer-events:none;
+  z-index:99999; /* 🔥 selalu paling atas */
+}
+
+@keyframes popLoveFix{
+  0%{
+    transform:translateY(0) scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-60px) scale(0.2);
+    opacity:0;
+  }
+}
+
+.particle{
+  position:fixed;
+  pointer-events:none;
+  z-index:99999;
+  font-size:14px;
+  animation: particleAnim 1.2s ease-out forwards;
+}
+
+@keyframes particleAnim{
+  0%{
+    transform:translate(0,0) scale(1);
+    opacity:1;
+  }
+  100%{
+    transform:translate(var(--x), var(--y)) scale(0.3);
+    opacity:0;
+  }
+}
+
+body{
+  transition: background 0.8s ease;
+}
+
+/* sidebar ikut berubah */
+.sidebar{
+  transition: background 0.8s ease, color 0.8s ease;
+}
+
+/* efek aurora glow */
+.aurora-glow{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  pointer-events:none;
+  opacity:0.6;
+  transition:all 0.8s ease;
+}
+
+#starCanvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+  pointer-events:none;
+}
+
+.nebula{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:-3;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,0,150,0.25), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(0,200,255,0.25), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(120,0,255,0.25), transparent 45%);
+
+  animation: nebulaMove 20s ease-in-out infinite alternate;
+  filter: blur(30px);
+}
+
+@keyframes nebulaMove{
+  0%{ transform:translate(0,0) scale(1); }
+  100%{ transform:translate(-30px,20px) scale(1.1); }
+}
+
+/* FIX LOVE & PARTICLE KETUTUP */
+.heart-burst,
+.global-heart,
+.particle {
+  z-index: 99999 !important;
+}
+
+.card div button {
+  margin-top: 0;
+  margin-left: 5px;
+  cursor: pointer;
+  display: inline-block;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.card div button:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Warna Mode Gelap */
+body.dark-mode {
+    --bg-color: linear-gradient(135deg, #1a1a2e, #16213e); /* Warna background gelap */
+    --card-bg: #1f4068; /* Warna kartu gelap */
+    --text-color: #e94560; /* Warna teks gelap */
+    --sidebar-bg: rgba(0, 0, 0, 0.7);
+    --accent: #ff4d8d;
+}
+
+/* Pastikan elemen menggunakan variabel agar bisa berubah */
+body {
+    background: var(--bg-color) !important;
+    color: var(--text-color);
+    transition: background 0.5s ease;
+}
+
+.sidebar { background: var(--sidebar-bg); transition: 0.5s; }
+.card, .form-box, select, input, textarea { 
+    background: var(--card-bg) !important; 
+    color: var(--text-color) !important; 
+    transition: 0.5s;
+}

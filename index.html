@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Diary 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="album-open"> <!-- Efek album buka saat web dimuat -->
+    <div class="nebula"></div>
+    <canvas id="starCanvas"></canvas>
+    <div class="aurora-glow"></div>
+
+    <div class="layout">
+        <div class="sidebar">
+            <button onclick="toggleDarkMode()" id="themeBtn" style="margin-bottom: 10px; font-size: 11px; position:relative; z-index:10;">🌙 Mode Gelap</button>
+            
+            <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 10px; text-align: center; margin-bottom: 15px; position: relative; z-index: 2;">
+                <small>Sudah Bersama:</small>
+                <h4 id="dayCount" style="margin: 5px 0; color: #ff2e79;">0 Hari</h4>
+            </div>
+
+            <h3>📅 Filter Bulan</h3>
+            <ul id="monthList"></ul>
+
+            <hr style="border: 0.5px solid rgba(255,255,255,0.3); margin: 15px 0; position: relative; z-index: 2;">
+            <div style="position: relative; z-index: 10;">
+                <button onclick="exportData()" style="background: #28a745; font-size: 11px; margin-bottom: 5px;">📥 Backup Data</button>
+                <input type="file" id="importFile" style="display:none" onchange="importData(event)">
+                <button onclick="document.getElementById('importFile').click()" style="background: #17a2b8; font-size: 11px;">📤 Restore Data</button>
+            </div>
+        </div>
+
+        <div class="main">
+            <header>💖 Love Diary Kita 💖</header>
+            <div class="form-box">
+                <div class="row">
+                    <select id="month">
+                        <option value="Januari">Januari</option>
+                        <option value="Februari">Februari</option>
+                        <option value="Maret">Maret</option>
+                        <option value="April">April</option>
+                        <option value="Mei">Mei</option>
+                        <option value="Juni">Juni</option>
+                        <option value="Juli">Juli</option>
+                        <option value="Agustus">Agustus</option>
+                        <option value="September">September</option>
+                        <option value="Oktober">Oktober</option>
+                        <option value="November">November</option>
+                        <option value="Desember">Desember</option>
+                    </select>
+                    <select id="year"></select>
+                </div>
+                <input type="text" id="title" placeholder="Judul kenangan 💕">
+                <textarea id="desc" rows="3" placeholder="Ceritakan momen 💌"></textarea>
+                <input type="file" id="image" accept="image/*">
+                <button id="saveBtn" onclick="saveData()">💖 Simpan Kenangan</button>
+            </div>
+            <div id="list"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
